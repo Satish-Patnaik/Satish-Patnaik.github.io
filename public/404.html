@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SatishBio — redirecting…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    // GitHub Pages SPA shim. Captures any unknown path and forwards
+    // it as a query param to index.html, where a tiny decoder restores
+    // the original URL via history.replaceState so React Router can pick it up.
+    // Reference: https://github.com/rafgraph/spa-github-pages
+    (function () {
+      var segmentsToKeep = 0; // for root-domain (Satish-Patnaik.github.io). Use 1 if deployed under /repo-name/.
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + segmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(segmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting…</p>
+</body>
+</html>

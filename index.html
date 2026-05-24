@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <title>Dr. Satish Patnaik Baggam — Bioinformatics Portfolio &amp; Free Tools</title>
+  <meta name="description" content="Free in-browser bioinformatics tools and computational biology services by Dr. Satish Patnaik Baggam (UC Irvine). ORF finder, primer designer, pairwise alignment, heatmap/PCA, volcano plots, qPCR analysis, and more." />
+  <meta name="author" content="Dr. Satish Patnaik Baggam" />
+  <meta name="keywords" content="bioinformatics, computational biology, sequence analysis, RNA-seq, single-cell, ORF finder, primer designer, BLAST, pairwise alignment, volcano plot, box plot, heatmap, PCA, qPCR, multi-omics, UC Irvine, ocular biology" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dr. Satish Patnaik Baggam — Bioinformatics Portfolio" />
+  <meta property="og:description" content="Free in-browser bioinformatics tools — ORF finder, primer designer, alignment, plots, qPCR and more. Personalized RNA-seq and single-cell analysis services." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/favicon.svg" />
+  <meta property="og:site_name" content="SatishBio" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dr. Satish Patnaik Baggam — Bioinformatics Portfolio" />
+  <meta name="twitter:description" content="Free bioinformatics tools for the scientific community — sequence analysis, primer design, alignment, plots, and more." />
+  <meta name="twitter:image" content="/favicon.svg" />
+
+  <!-- Identity links (helpful for ORCID/Scholar discovery + IndieWeb) -->
+  <meta name="orcid" content="0000-0001-8240-6191" />
+  <link rel="me" href="https://orcid.org/0000-0001-8240-6191" />
+  <link rel="me" href="https://scholar.google.com/citations?user=Gc2_Oj8AAAAJ&amp;hl=en" />
+  <link rel="me" href="https://github.com/Satish-Patnaik" />
+  <link rel="me" href="https://linkedin.com/in/dr-satish-patnaik-baggam-259b7ba9" />
+
+  <!-- GitHub Pages SPA decoder: paired with public/404.html. Restores deep-link URLs before React Router boots. -->
+  <script type="text/javascript">
+    (function (l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function (s) {
+          return s.replace(/~and~/g, '&');
+        }).join('?');
+        window.history.replaceState(null, '', l.pathname.slice(0, -1) + decoded + l.hash);
+      }
+    })(window.location);
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
