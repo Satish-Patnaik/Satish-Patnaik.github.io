@@ -410,7 +410,7 @@ Sample_4,Treatment,TNF,21.8`;
     toast.success('Statistical results exported successfully');
   };
 
-  const exportChart = (format: 'png' | 'jpeg' | 'pdf') => {
+  const exportChart = (format: 'png' | 'jpeg') => {
     toast.info(`Chart export as ${format.toUpperCase()} will be implemented with additional libraries`);
   };
 
@@ -866,9 +866,6 @@ Sample_2,Treatment,IL6,22.1"
                       </Button>
                       <Button onClick={() => exportChart('jpeg')} variant="outline" size="sm">
                         Export JPEG
-                      </Button>
-                      <Button onClick={() => exportChart('pdf')} variant="outline" size="sm">
-                        Export PDF
                       </Button>
                     </div>
                   </CardContent>

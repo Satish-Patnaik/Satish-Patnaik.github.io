@@ -64,7 +64,7 @@ export default function Contact() {
             <CardContent>
               <div className="grid grid-cols-2 gap-3">
                 <Button variant="outline" asChild>
-                  <a href="https://linkedin.com/in/dr-satish-patnaik-baggam-259b7ba9" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.linkedin.com/in/dr-satish-patnaik-baggam-ph-d-259b7ba9/" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="h-4 w-4 mr-2" />
                     LinkedIn
                   </a>

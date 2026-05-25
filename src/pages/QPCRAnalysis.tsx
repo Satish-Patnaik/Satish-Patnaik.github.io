@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -380,10 +379,13 @@ export default function QPCRAnalysis() {
     if (!tempCtx) return;
 
     const scaleFactor = dpi / 72;
-    tempCanvas.width = 800 * scaleFactor;
-    tempCanvas.height = 600 * scaleFactor;
-    tempCtx.scale(scaleFactor, scaleFactor);
-    tempCtx.drawImage(canvas, 0, 0);
+    tempCanvas.width = canvas.width * scaleFactor;
+    tempCanvas.height = canvas.height * scaleFactor;
+    tempCtx.imageSmoothingEnabled = true;
+    tempCtx.imageSmoothingQuality = 'high';
+    tempCtx.fillStyle = '#ffffff';
+    tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+    tempCtx.drawImage(canvas, 0, 0, tempCanvas.width, tempCanvas.height);
 
     const link = document.createElement('a');
     link.download = `qpcr_plot_${dpi}dpi.${format}`;
@@ -409,11 +411,10 @@ export default function QPCRAnalysis() {
         </div>
 
         <Tabs defaultValue="data" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="data">Data Input</TabsTrigger>
             <TabsTrigger value="analysis">Analysis</TabsTrigger>
             <TabsTrigger value="plot">Visualization</TabsTrigger>
-            <TabsTrigger value="export">Export</TabsTrigger>
           </TabsList>
 
           <TabsContent value="data">
@@ -622,68 +623,22 @@ export default function QPCRAnalysis() {
                     style={{ maxHeight: '600px' }}
                   />
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="export">
-            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur">
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Download className="h-5 w-5 mr-2 text-orange-600" />
-                  Export Options
-                </CardTitle>
-                <CardDescription>
-                  Download analysis results and plots
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <h3 className="font-semibold mb-4">Analysis Results</h3>
-                  <Button
-                    onClick={downloadResults}
-                    variant="outline"
-                    disabled={results.length === 0}
-                    className="w-full"
-                  >
-                    <Download className="h-4 w-4 mr-2" />
-                    Download Results CSV
-                  </Button>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold mb-4">High-Resolution Plot Export</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <Button
-                      onClick={() => downloadPlot('png', 300)}
-                      variant="outline"
-                      disabled={!plotGenerated}
-                    >
-                      PNG (300 DPI)
-                    </Button>
-                    <Button
-                      onClick={() => downloadPlot('jpeg', 300)}
-                      variant="outline"
-                      disabled={!plotGenerated}
-                    >
-                      JPEG (300 DPI)
-                    </Button>
-                  </div>
-                </div>
 
                 {results.length > 0 && (
-                  <div className="p-4 bg-blue-50 rounded-lg">
-                    <h4 className="font-semibold text-blue-900 mb-2">Analysis Summary</h4>
-                    <div className="grid grid-cols-2 gap-4 text-sm">
-                      <div>
-                        <p><strong>Total measurements:</strong> {results.length}</p>
-                        <p><strong>Genes analyzed:</strong> {[...new Set(results.map(r => r.gene))].length}</p>
-                      </div>
-                      <div>
-                        <p><strong>Reference gene:</strong> {referenceGene}</p>
-                        <p><strong>Control group:</strong> {controlGroup}</p>
-                      </div>
+                  <div className="space-y-3 pt-4 border-t">
+                    <h4 className="font-semibold text-sm text-gray-700">Download</h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Button onClick={() => downloadPlot('png', 300)} variant="outline" size="sm" disabled={!plotGenerated}>
+                        PNG (300 DPI)
+                      </Button>
+                      <Button onClick={() => downloadPlot('jpeg', 300)} variant="outline" size="sm" disabled={!plotGenerated}>
+                        JPEG (300 DPI)
+                      </Button>
                     </div>
+                    <Button onClick={downloadResults} variant="outline" size="sm" className="w-full">
+                      <Download className="h-4 w-4 mr-2" />
+                      Download Results CSV
+                    </Button>
                   </div>
                 )}
               </CardContent>
@@ -691,8 +646,6 @@ export default function QPCRAnalysis() {
           </TabsContent>
         </Tabs>
       </div>
-
-      <Footer />
     </div>
   );
 }

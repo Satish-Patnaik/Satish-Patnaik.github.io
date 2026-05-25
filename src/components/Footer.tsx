@@ -12,7 +12,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://linkedin.com/in/dr-satish-patnaik-baggam-259b7ba9"
+                href="https://www.linkedin.com/in/dr-satish-patnaik-baggam-ph-d-259b7ba9/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors"
@@ -63,11 +63,10 @@ const Footer = () => {
           <div className="text-center">
             <h4 className="text-lg font-semibold mb-4 text-yellow-400">Disclaimer</h4>
             <div className="text-gray-300 text-sm space-y-2 max-w-4xl mx-auto">
-              <p>These tools are provided free of charge for educational and research purposes.</p>
-              <p>Results are automatically generated and should be independently validated before being used in publications or critical decision-making.</p>
-              <p>The developer is not responsible for misuse, errors, or misinterpretation of results.</p>
-              <p>No data is stored — all processing happens client-side in your browser.</p>
-              <p>Only basic usage statistics are tracked via verified email (number of users, tool access frequency).</p>
+              <p>These tools are provided free of charge for educational and research purposes only.</p>
+              <p>Results are automatically generated and should be independently validated before being used in publications, clinical work, regulatory submissions, or any critical decision-making.</p>
+              <p>The developer is not responsible for misuse, errors, omissions, or misinterpretation of results.</p>
+              <p>No data is stored. All processing happens locally in your browser.</p>
             </div>
           </div>
         </div>

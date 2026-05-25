@@ -443,7 +443,7 @@ export default function Tools() {
           </Badge>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Free Online Tools</h1>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Bioinformatics utilities plus document helpers you can run directly in your browser. No signup.
+            Bioinformatics analysis runs directly in your browser. No signup required.
           </p>
         </div>
 
@@ -601,7 +601,7 @@ export default function Tools() {
                     <Button asChild size="lg" variant="secondary">
                       <Link to="/contact">Get in touch</Link>
                     </Button>
-                    <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+                    <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600">
                       <Link to="/bioinformatics-help">Learning resources</Link>
                     </Button>
                   </div>
@@ -612,15 +612,6 @@ export default function Tools() {
 
           {/* DOCUMENT TOOLS */}
           <TabsContent value="docs" className="mt-10 space-y-8">
-            <Alert>
-              <Info className="h-4 w-4" />
-              <AlertTitle>Reality check</AlertTitle>
-              <AlertDescription>
-                These conversions run in your browser. Complex Word formatting and scanned PDFs will not convert perfectly.
-                If you need pixel-perfect conversions, you’ll want a backend (LibreOffice) or a paid conversion API.
-              </AlertDescription>
-            </Alert>
-
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* DOCX -> PDF */}
               <Card className="border-0 shadow-xl bg-white/90 backdrop-blur">
@@ -766,7 +757,7 @@ export default function Tools() {
                     <Button asChild size="lg" variant="secondary">
                       <Link to="/contact">Get in touch</Link>
                     </Button>
-                    <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+                    <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600">
                       <Link to="/bioinformatics-help">Learning resources</Link>
                     </Button>
                   </div>

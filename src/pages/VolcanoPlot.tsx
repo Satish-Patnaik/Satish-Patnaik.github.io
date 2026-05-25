@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
-import { TrendingUp, Upload, Download, Settings, Palette, Database } from 'lucide-react';
+import { TrendingUp, Upload, Settings, Palette, Database } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface GeneData {
@@ -404,12 +404,11 @@ export default function VolcanoPlot() {
         </div>
 
         <Tabs defaultValue="data" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="data">Data Input</TabsTrigger>
             <TabsTrigger value="settings">Plot Settings</TabsTrigger>
             <TabsTrigger value="plot">Generate Plot</TabsTrigger>
             <TabsTrigger value="results">Gene Lists</TabsTrigger>
-            <TabsTrigger value="export">Export</TabsTrigger>
           </TabsList>
 
           <TabsContent value="data">
@@ -791,112 +790,6 @@ export default function VolcanoPlot() {
                 </CardContent>
               </Card>
             </div>
-          </TabsContent>
-
-          <TabsContent value="export">
-            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur">
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Download className="h-5 w-5 mr-2 text-green-600" />
-                  Export Options
-                </CardTitle>
-                <CardDescription>
-                  Download your plot in various formats and resolutions
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <h3 className="font-semibold mb-4">High-Resolution Plot Export</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <Button
-                      onClick={() => downloadPlot('png', 300)}
-                      variant="outline"
-                      disabled={data.length === 0}
-                    >
-                      PNG (300 DPI)
-                    </Button>
-                    <Button
-                      onClick={() => downloadPlot('jpeg', 300)}
-                      variant="outline"
-                      disabled={data.length === 0}
-                    >
-                      JPEG (300 DPI)
-                    </Button>
-                    <Button
-                      onClick={() => downloadPlot('tiff', 300)}
-                      variant="outline"
-                      disabled={data.length === 0}
-                    >
-                      TIFF (300 DPI)
-                    </Button>
-                    <Button
-                      onClick={() => downloadPlot('png', 600)}
-                      variant="outline"
-                      disabled={data.length === 0}
-                    >
-                      PNG (600 DPI)
-                    </Button>
-                  </div>
-                  {data.length > 0 && !plotGenerated && (
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                      Tip: clicking a download button will generate the plot automatically if you haven't already.
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <h3 className="font-semibold mb-4">Gene Lists</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <Button
-                      onClick={() => downloadGeneList('upregulated')}
-                      variant="outline"
-                      disabled={significantGenes.upregulated.length === 0}
-                      className="text-red-600 border-red-200 hover:bg-red-50"
-                    >
-                      Upregulated ({significantGenes.upregulated.length})
-                    </Button>
-                    <Button
-                      onClick={() => downloadGeneList('downregulated')}
-                      variant="outline"
-                      disabled={significantGenes.downregulated.length === 0}
-                      className="text-green-600 border-green-200 hover:bg-green-50"
-                    >
-                      Downregulated ({significantGenes.downregulated.length})
-                    </Button>
-                    <Button
-                      onClick={() => downloadGeneList('all')}
-                      variant="outline"
-                      disabled={significantGenes.all.length === 0}
-                    >
-                      All Significant ({significantGenes.all.length})
-                    </Button>
-                  </div>
-                </div>
-                
-                {data.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-gray-50 rounded-lg">
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-red-600">
-                        {significantGenes.upregulated.length}
-                      </p>
-                      <p className="text-sm text-gray-600">Upregulated</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-green-600">
-                        {significantGenes.downregulated.length}
-                      </p>
-                      <p className="text-sm text-gray-600">Downregulated</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-gray-600">
-                        {data.length - significantGenes.all.length}
-                      </p>
-                      <p className="text-sm text-gray-600">Non-significant</p>
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
           </TabsContent>
         </Tabs>
       </div>

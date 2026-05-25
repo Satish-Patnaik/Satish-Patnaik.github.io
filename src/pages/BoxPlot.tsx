@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
-import { BarChart3, Upload, Download, Settings, Palette, Plus, Trash2, Database } from 'lucide-react';
+import { BarChart3, Upload, Settings, Palette, Plus, Trash2, Database } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface ExpressionData {
@@ -448,7 +448,7 @@ export default function BoxPlot() {
     toast.success(`${plotSettings.plotType === 'box' ? 'Box' : 'Violin'} plot generated successfully!`);
   };
 
-  const downloadPlot = (format: 'png' | 'jpeg' | 'tiff' | 'pdf', dpi: number = 300) => {
+  const downloadPlot = (format: 'png' | 'jpeg' | 'tiff', dpi: number = 300) => {
     if (stats.length === 0) {
       toast.error('Load data first');
       return;
@@ -548,11 +548,10 @@ export default function BoxPlot() {
         </div>
 
         <Tabs defaultValue="data" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="data">Data Input</TabsTrigger>
             <TabsTrigger value="settings">Plot Settings</TabsTrigger>
             <TabsTrigger value="plot">Generate Plot</TabsTrigger>
-            <TabsTrigger value="export">Export</TabsTrigger>
           </TabsList>
 
           <TabsContent value="data">
@@ -835,12 +834,14 @@ export default function BoxPlot() {
                 {plotGenerated && (
                   <div className="space-y-3 pt-4 border-t">
                     <h4 className="font-semibold text-sm text-gray-700">Download plot (300 DPI)</h4>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    <div className="grid grid-cols-3 gap-2">
                       <Button onClick={() => downloadPlot('png', 300)} variant="outline" size="sm">PNG</Button>
                       <Button onClick={() => downloadPlot('jpeg', 300)} variant="outline" size="sm">JPEG</Button>
                       <Button onClick={() => downloadPlot('tiff', 300)} variant="outline" size="sm">TIFF</Button>
-                      <Button onClick={() => downloadPlot('pdf', 300)} variant="outline" size="sm">PDF</Button>
                     </div>
+                    <Button onClick={downloadStats} variant="outline" size="sm" className="w-full" disabled={stats.length === 0}>
+                      Download Statistics CSV
+                    </Button>
                   </div>
                 )}
 
@@ -889,71 +890,6 @@ export default function BoxPlot() {
             </Card>
           </TabsContent>
 
-          <TabsContent value="export">
-            <Card className="border-0 shadow-xl bg-white/90 backdrop-blur">
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <Download className="h-5 w-5 mr-2 text-green-600" />
-                  Export Options
-                </CardTitle>
-                <CardDescription>
-                  Download your plot in various high-resolution formats
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <h3 className="font-semibold mb-4">High-Resolution Plot Export (300 DPI)</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <Button
-                      onClick={() => downloadPlot('png', 300)}
-                      variant="outline"
-                      disabled={stats.length === 0}
-                    >
-                      PNG
-                    </Button>
-                    <Button
-                      onClick={() => downloadPlot('jpeg', 300)}
-                      variant="outline"
-                      disabled={stats.length === 0}
-                    >
-                      JPEG
-                    </Button>
-                    <Button
-                      onClick={() => downloadPlot('tiff', 300)}
-                      variant="outline"
-                      disabled={stats.length === 0}
-                    >
-                      TIFF
-                    </Button>
-                    <Button
-                      onClick={() => downloadPlot('pdf', 300)}
-                      variant="outline"
-                      disabled={stats.length === 0}
-                    >
-                      PDF
-                    </Button>
-                  </div>
-                  {stats.length > 0 && !plotGenerated && (
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                      Tip: clicking a download button will generate the plot automatically if you haven't already.
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <h3 className="font-semibold mb-4">Statistics</h3>
-                  <Button
-                    onClick={downloadStats}
-                    variant="outline"
-                    disabled={stats.length === 0}
-                    className="w-full"
-                  >
-                    Download Statistics CSV
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
         </Tabs>
       </div>
 

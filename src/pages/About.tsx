@@ -156,25 +156,25 @@ export default function About() {
                 Email Me
               </a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-              <a href="https://linkedin.com/in/dr-satish-patnaik-baggam-259b7ba9" target="_blank" rel="noopener noreferrer">
+            <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600">
+              <a href="https://www.linkedin.com/in/dr-satish-patnaik-baggam-ph-d-259b7ba9/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5 mr-2" />
                 LinkedIn
               </a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+            <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600">
               <a href="https://github.com/Satish-Patnaik" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5 mr-2" />
                 GitHub
               </a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+            <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600">
               <a href="https://orcid.org/0000-0001-8240-6191" target="_blank" rel="noopener noreferrer">
                 <IdCard className="h-5 w-5 mr-2" />
                 ORCID
               </a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+            <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600">
               <a href="https://scholar.google.com/citations?user=Gc2_Oj8AAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
                 <BookOpen className="h-5 w-5 mr-2" />
                 Google Scholar

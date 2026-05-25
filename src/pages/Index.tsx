@@ -82,7 +82,7 @@ export default function Index() {
 
             <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
               <Button variant="ghost" size="lg" asChild className="text-blue-600 hover:text-blue-700">
-                <a href="https://linkedin.com/in/dr-satish-patnaik-baggam-259b7ba9" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/dr-satish-patnaik-baggam-ph-d-259b7ba9/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-6 w-6 mr-2" />
                   LinkedIn
                 </a>
@@ -165,7 +165,7 @@ export default function Index() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+              <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white hover:text-blue-600">
                 <a href="mailto:satishbiochem1@gmail.com">
                   Email me
                 </a>
